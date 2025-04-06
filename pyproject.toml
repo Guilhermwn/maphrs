@@ -7,7 +7,10 @@ authors = [
     { name = "Guilhermwn", email = "limaoplaykglp@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "matplotlib>=3.10.1",
+    "scipy>=1.15.2",
+]
 
 [project.scripts]
 maphrs = "maphrs:main"
