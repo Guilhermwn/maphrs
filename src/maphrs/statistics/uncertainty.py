@@ -1,4 +1,4 @@
-from maphrs.stats.descriptive import sqrt, standard_deviation
+from maphrs.statistics.descriptive import sqrt, standard_deviation
 
 
 def uncertainty_a(values: list[int | float]):

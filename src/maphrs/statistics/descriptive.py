@@ -1,3 +1,9 @@
+"""
+Descriptive statistics refers to the study of the aggregate quantities of a dataset.
+These measures are some of the commonly used notations in everyday life.
+Some examples of descriptive statistics include average annual income, median home
+price in a neighborhood, range of credit scores of a population, etc.
+"""
 from typing import Literal
 
 
@@ -52,8 +58,8 @@ def mean(values: list[int | float]) -> int | float:
 
 def standard_deviation(values: list[int | float], type: Literal["sample", "population"] = "sample"):
     """
-    Calculate the standard deviation of a list of numbers. It's possible to select the sample standard deviation or \
-    the population standard deviation.
+    Calculate the standard deviation of a list of numbers. It's possible to choose wich type
+    of standard deviation to calculate, be it 'sample' or 'population'.
     :param values: list of numbers, the list length must be greater or equal to 2
     :param type: choose either "sample" or "population" standard deviation types
     :return: calculated standard deviation of the list of numbers
