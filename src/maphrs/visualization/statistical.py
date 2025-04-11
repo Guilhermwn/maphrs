@@ -10,6 +10,9 @@ def line_plot(
         show: bool = True,
         save: dict | None = None
 ):
+    """
+    save_opt = {"save":True, "filename": "plot", "format":"svg", "bytes": True}
+    """
     if save is None:
         save = {"save": False}
 

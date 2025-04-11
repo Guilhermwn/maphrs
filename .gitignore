@@ -11,3 +11,6 @@ wheels/
 
 # PyCharm
 .idea
+
+# Testing
+.pytest_cache
