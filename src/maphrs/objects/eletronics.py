@@ -40,7 +40,7 @@ class Resistor:
         """
         return f"Resistor(value={self.value})"
 
-class ResistorUnity:
+class ResistorUnit:
     """
     Defines common resistor units as tuples containing the unit name and its multiplier.
 
