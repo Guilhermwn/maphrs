@@ -1,3 +1,7 @@
+from typing import Union
+
+Number = Union[int, float]
+
 class Resistor:
     """
     Represents an electrical resistor with a given resistance value in ohms.
@@ -6,7 +10,7 @@ class Resistor:
 
     :param value: Resistance value in ohms.
     """
-    def __init__(self, value: int | float):
+    def __init__(self, value: Number):
         """
         Initializes a Resistor with a given resistance value.
 

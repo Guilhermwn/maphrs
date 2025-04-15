@@ -1,15 +1,13 @@
 [project]
 name = "maphrs"
-version = "0.0.3"
+version = "0.0.4"
 description = "A comprehensive and easy package with calculation utilities"
 readme = "README.md"
 authors = [
     { name = "Guilhermwn", email = "limaoplaykglp@gmail.com" }
 ]
-requires-python = ">=3.12"
-dependencies = [
-    "matplotlib==3.10.0",
-]
+requires-python = ">=3.9"
+dependencies = []
 
 [project.scripts]
 maphrs = "maphrs:main"

@@ -4,10 +4,13 @@ These measures are some of the commonly used notations in everyday life.
 Some examples of descriptive statistics include average annual income, median home
 price in a neighborhood, range of credit scores of a population, etc.
 """
-from typing import Literal
+
+from typing import Literal, Union
+
+Number = Union[int, float]
 
 
-def root(number: int | float, n: int) -> int | float:
+def root(number: Number, n: int) -> int | float:
     """
     Calculate de nth root of a number.
     :param number: Any integer or float number
@@ -27,7 +30,7 @@ def root(number: int | float, n: int) -> int | float:
     return number ** (1 / n)
 
 
-def sqrt(number: int | float) -> int | float:
+def sqrt(number: Number) -> Number:
     """
     Calculate the square root of a number.
     :param number: Integer or Float number
@@ -41,7 +44,7 @@ def sqrt(number: int | float) -> int | float:
     return root(number, 2)
 
 
-def mean(values: list[int | float]) -> int | float:
+def mean(values: list[Number]) -> Number:
     """
     Calculate the mean of a list of numbers.
     :param values: list of numbers
@@ -56,7 +59,9 @@ def mean(values: list[int | float]) -> int | float:
     return sum(values) / len(values)
 
 
-def standard_deviation(values: list[int | float], type: Literal["sample", "population"] = "sample"):
+def standard_deviation(
+    values: list[Number], type: Literal["sample", "population"] = "sample"
+):
     """
     Calculate the standard deviation of a list of numbers. It's possible to choose wich type
     of standard deviation to calculate, be it 'sample' or 'population'.
@@ -74,11 +79,17 @@ def standard_deviation(values: list[int | float], type: Literal["sample", "popul
         raise Exception("Minimum length of values need to be 2")
 
     if type.lower() == "sample":
-        std_value = sqrt(sum([(xi - mean(values)) ** 2 for xi in values]) / (len(values) - 1))
+        std_value = sqrt(
+            sum([(xi - mean(values)) ** 2 for xi in values]) / (len(values) - 1)
+        )
     elif type.lower() == "population":
-        std_value = sqrt(sum([(xi - mean(values)) ** 2 for xi in values]) / (len(values)))
+        std_value = sqrt(
+            sum([(xi - mean(values)) ** 2 for xi in values]) / (len(values))
+        )
     else:
-        raise ValueError(f"'type' must be either 'sample' or 'population', {type} is invalid")
+        raise ValueError(
+            f"'type' must be either 'sample' or 'population', {type} is invalid"
+        )
 
     return std_value
 

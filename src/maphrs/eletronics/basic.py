@@ -1,10 +1,15 @@
-from typing import Literal
-from maphrs import Resistor, COMMERCIAL_RESISTORS, relative_error
+from typing import Literal, Union
+
+from maphrs.objects.eletronics import COMMERCIAL_RESISTORS, Resistor
+from maphrs.statistics.descriptive import relative_error
+
+
+Number = Union[int, float]
 
 def find_resistor_association(
-        value: int | float,
-        association_type: Literal["series", "parallel"] = "series",
-        tolerance: int = 10
+    value: Number,
+    association_type: Literal["series", "parallel"] = "series",
+    tolerance: int = 10,
 ):
     """
     Finds combinations of two commercial resistors from the E24 series that,
@@ -27,14 +32,13 @@ def find_resistor_association(
          'relative error': 0.29910269192422567}
 
         >>> assoc_s = find_resistor_association(13260)
-        
+
         >>> assoc_s[0]
         {'r1': Resistor(value=270.0),
          'r2': Resistor(value=13000.0),
          'value': Resistor(value=13270.0),
          'relative error': 0.07541478129713425}
     """
-
 
     resistor = Resistor(value)
     resistor_list = COMMERCIAL_RESISTORS.E24
@@ -43,18 +47,14 @@ def find_resistor_association(
     assoc = 0
     for i, r1 in enumerate(resistor_list):
         for r2 in resistor_list[i:]:
-
             if association_type == "series":
-                assoc = r1+r2
+                assoc = r1 + r2
             elif association_type == "parallel":
-                assoc = r1|r2
+                assoc = r1 | r2
 
             relative = relative_error(assoc.value, resistor.value)
-            if relative < tolerance/100:
-                resistor_values.append({
-                    "r1": r1,
-                    "r2": r2,
-                    "value": assoc,
-                    "relative error": relative
-                })
+            if relative < tolerance / 100:
+                resistor_values.append(
+                    {"r1": r1, "r2": r2, "value": assoc, "relative error": relative}
+                )
     return resistor_values
